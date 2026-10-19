@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>【業務報告】最新トピックス要約・エビデンス集</title>
+    <!-- Google Fonts: Noto Sans JP -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            /* 片山先生テーマ：上品な紫 */
+            --katayama-purple: #4a2e80;
+            --katayama-purple-sub: #6b46c1;
+            --katayama-bg: #f8f5fc;
+
+            /* 川重テーマ：青 */
+            --khi-blue: #0b3c5d;
+            --khi-blue-sub: #328cc1;
+            --khi-bg: #f0f7fc;
+
+            --accent-red: #d9534f;
+            --bg-color: #f4f6f9;
+            --card-bg: #ffffff;
+            --text-main: #2b2b2b;
+            --text-sub: #555555;
+            --border-color: #e0e0e0;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-weight: 500;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.85;
+            margin: 0;
+            padding: 30px 15px;
+        }
+
+        .container {
+            max-width: 880px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+            border: 1px solid var(--border-color);
+        }
+
+        /* ヘッダー */
+        .header {
+            border-bottom: 3px solid #333333;
+            padding-bottom: 15px;
+            margin-bottom: 35px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+
+        .header h1 {
+            font-size: 22px;
+            font-weight: 700;
+            color: #2b2b2b;
+            margin: 0;
+            letter-spacing: 0.5px;
+        }
+
+        .header .meta {
+            font-size: 13px;
+            color: var(--text-sub);
+        }
+
+        /* 紫セクション（片山先生） */
+        .section-header-purple {
+            font-size: 18px;
+            font-weight: 700;
+            color: #ffffff;
+            background-color: var(--katayama-purple);
+            padding: 10px 18px;
+            border-radius: 6px;
+            margin-top: 40px;
+            margin-bottom: 25px;
+        }
+
+        .card-purple {
+            background-color: #ffffff;
+            border: 1px solid var(--border-color);
+            border-left: 5px solid var(--katayama-purple-sub);
+            border-radius: 0 8px 8px 0;
+            padding: 22px 25px;
+            margin-bottom: 25px;
+        }
+
+        .card-purple .card-title {
+            color: var(--katayama-purple);
+        }
+
+        .badge-purple {
+            background-color: var(--katayama-purple-sub);
+            color: #ffffff;
+            font-size: 11px;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-weight: 700;
+        }
+
+        /* 青セクション（川重） */
+        .section-header-blue {
+            font-size: 18px;
+            font-weight: 700;
+            color: #ffffff;
+            background-color: var(--khi-blue);
+            padding: 10px 18px;
+            border-radius: 6px;
+            margin-top: 40px;
+            margin-bottom: 25px;
+        }
+
+        .card-blue {
+            background-color: #ffffff;
+            border: 1px solid var(--border-color);
+            border-left: 5px solid var(--khi-blue-sub);
+            border-radius: 0 8px 8px 0;
+            padding: 22px 25px;
+            margin-bottom: 25px;
+        }
+
+        .card-blue .card-title {
+            color: var(--khi-blue);
+        }
+
+        .badge-blue {
+            background-color: var(--khi-blue-sub);
+            color: #ffffff;
+            font-size: 11px;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-weight: 700;
+        }
+
+        .badge-important {
+            background-color: var(--accent-red);
+            color: #ffffff;
+            font-size: 11px;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-weight: 700;
+        }
+
+        .card-title {
+            font-size: 17px;
+            font-weight: 700;
+            margin-top: 0;
+            margin-bottom: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid #f0f0f0;
+            padding-bottom: 8px;
+        }
+
+        p.p-block {
+            margin: 0 0 16px 0;
+            font-size: 14.5px;
+            color: var(--text-main);
+        }
+
+        .detail-box-purple {
+            background-color: var(--katayama-bg);
+            border-left: 3px solid var(--katayama-purple-sub);
+            padding: 14px 18px;
+            border-radius: 0 6px 6px 0;
+            margin-top: 18px;
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+
+        .detail-box-blue {
+            background-color: var(--khi-bg);
+            border-left: 3px solid var(--khi-blue-sub);
+            padding: 14px 18px;
+            border-radius: 0 6px 6px 0;
+            margin-top: 18px;
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+
+        .detail-box-title-purple {
+            font-weight: 700;
+            color: var(--katayama-purple);
+            font-size: 13px;
+            margin-bottom: 6px;
+            display: block;
+        }
+
+        .detail-box-title-blue {
+            font-weight: 700;
+            color: var(--khi-blue);
+            font-size: 13px;
+            margin-bottom: 6px;
+            display: block;
+        }
+
+        /* ★追加：考察・見解用の小さなテキストボックス */
+        .insight-note {
+            background-color: #fffbeb;
+            border: 1px solid #fde68a;
+            border-left: 4px solid #f59e0b;
+            color: #92400e;
+            font-size: 12.5px; /* 文字を小さく */
+            line-height: 1.6;
+            padding: 10px 14px;
+            border-radius: 0 4px 4px 0;
+            margin-top: 12px;
+            margin-bottom: 15px;
+        }
+
+        .insight-note strong {
+            color: #b45309;
+            font-weight: 900;
+        }
+
+        .evidence-box {
+            background-color: #f8fafc;
+            border: 1px solid #e2e8f0;
+            padding: 12px 16px;
+            border-radius: 6px;
+            margin-top: 15px;
+            font-size: 13px;
+            color: var(--text-sub);
+        }
+
+        .evidence-title {
+            font-weight: 700;
+            color: #444444;
+            margin-bottom: 4px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .evidence-link {
+            color: #3182ce;
+            text-decoration: none;
+            word-break: break-all;
+        }
+
+        .evidence-link:hover {
+            text-decoration: underline;
+        }
+
+        .read-text {
+            font-size: 0.88em;
+            color: #555555;
+            font-weight: 500;
+        }
+
+        ul.list-block {
+            margin: 10px 0 0 0;
+            padding-left: 20px;
+            font-size: 14px;
+        }
+
+        ul.list-block li {
+            margin-bottom: 10px;
+            color: var(--text-main);
+        }
+
+        ul.list-block li strong {
+            font-weight: 700;
+        }
+
+        .card-purple ul.list-block li strong {
+            color: var(--katayama-purple);
+        }
+
+        .card-blue ul.list-block li strong {
+            color: var(--khi-blue);
+        }
+
+        .highlight {
+            background: linear-gradient(transparent 60%, #fff2ac 60%);
+            font-weight: 700;
+        }
+
+        .footer {
+            margin-top: 45px;
+            text-align: center;
+            font-size: 12px;
+            color: #888888;
+            border-top: 1px solid var(--border-color);
+            padding-top: 18px;
+        }
+
+        .disclaimer-text {
+            font-size: 12.5px;
+            color: #666666;
+            margin-top: 8px;
+            text-align: right;
+            font-style: italic;
+        }
+
+        @media print {
+            body { background: #fff; padding: 0; }
+            .container { box-shadow: none; border: none; padding: 0; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <div class="header">
+        <h1>【業務報告】最新トピックス要約・エビデンス集</h1>
+        <div class="meta">作成日：2026年10月19日</div>
+    </div>
+
+
+    <!-- 1. 片山さつき氏（テーマ：上品な紫 / 時系列順） -->
+    <div class="section-header-purple">1. 片山さつき財務相 関連トピックス（時系列）</div>
+
+    <!-- トピックス 1-1（2026年10月16日 会見動向） -->
+    <div class="card-purple">
+        <div class="card-title">
+            <span>【直近記者会見】今秋以降の補正予算方針「真に緊要性の高い施策に限定」</span>
+            <span class="badge-purple">2026年10月16日</span>
+        </div>
+
+        <p class="p-block">
+            2026年10月16日の閣議後記者会見にて、今後の財政運営および補正予算編成についての見解を表明。<br>
+            骨太の方針に沿い、<span class="highlight">「補正予算を編成する場合であっても真に緊要性の高い施策に限定する」</span>との厳格な対応方針を示しました。
+        </p>
+
+        <div class="evidence-box">
+            <div class="evidence-title">🔗 引用元・エビデンス</div>
+            ・財務省 公式発表「片山財務大臣兼内閣府特命担当大臣閣議後記者会見の概要」（2026年10月16日）<br>
+            <a class="evidence-link" href="https://www.mof.go.jp/public_relations/conference/my20261016.html" target="_blank">https://www.mof.go.jp/public_relations/conference/my20261016.html</a>
+        </div>
+    </div>
+
+    <!-- トピックス 1-2（2026年10月15日 正式選任） -->
+    <div class="card-purple">
+        <div class="card-title">
+            <span>【最重要】世界銀行・IMF<span class="read-text">（国際通貨基金）</span>「合同開発委員会」の議長に正式就任</span>
+            <span class="badge-important">2026年10月15日</span>
+        </div>
+
+        <p class="p-block">
+            バンコクで開催されたIMF・世銀年次総会にて、片山さつき財務相が世界銀行とIMF<span class="read-text">（国際通貨基金）</span>の閣僚級協議体である<br>
+            <strong>「合同開発委員会（Development Committee<span class="read-text">：ディベロップメント・コミッティ</span>）」の次期議長</strong>に正式選任されました。<br>
+            1974年の委員会設置以来、<span class="highlight">日本人がトップ（議長）を務めるのは史上初</span>となります（任期：2026年10月15日〜2028年10月）。
+        </p>
+
+        <ul class="list-block">
+            <li>
+                <strong>役割と権限：</strong><br>
+                加盟25カ国の財務相・開発相が集まり、途上国の過剰債務問題（再建ルール策定）や気候変動資金について<br>
+                <strong>「公式な合意決定を行う閣僚級会議の議長（取りまとめ役）」</strong>を担います。
+            </li>
+            <li>
+                <strong>背景と影響：</strong><br>
+                旧大蔵省（現財務省）で女性初の主計官を務めた専門性が評価された選出であり、国際金融ルール形成で日本が主導権を握ることで、ODA等の開発融資を通じた<strong>日本企業の海外インフラ・環境分野への参入に追い風</strong>となる見込みです。
+            </li>
+        </ul>
+
+        <div class="evidence-box">
+            <div class="evidence-title">🔗 引用元・エビデンス</div>
+            ・財務省 報道発表「片山財務大臣の世銀・IMF合同開発委員会次期議長指名について」（2026年10月13日発表／10月15日選任）<br>
+            ・FNNプライムオンライン「片山財務大臣『身の引き締まる思い』日本初の世銀・IMF合同開発委議長に就任へ」（2026年10月12日）<br>
+            <a class="evidence-link" href="https://www.fnn.jp/articles/-/1131478" target="_blank">https://www.fnn.jp/articles/-/1131478</a>
+        </div>
+    </div>
+
+    <!-- トピックス 1-3（2026年7月 骨太の方針2026） -->
+    <div class="card-purple">
+        <div class="card-title">
+            <span>「骨太の方針2026」閣議決定（ビジネスに関わる主要5テーマを抜粋）</span>
+            <span class="badge-purple">2026年7月21日</span>
+        </div>
+
+        <p class="p-block">
+            政府は2026年7月21日、経済財政運営の基本指針となる<strong>「骨太の方針2026（基本方針2026）」</strong>を閣議決定。<br>
+            片山財務相らが中心となり、従来の抑圧的予算から投資主導型政策への転換が図られました。ここでは多岐にわたる膨大な施策の中から、<span class="highlight">産業やビジネスへの影響が特に大きい5つの柱を抜粋</span>して要約します。
+        </p>
+
+        <ul class="list-block">
+            <li>
+                <strong>1. 「責任ある積極財政」の確立：</strong><br>
+                2027年度を「責任ある積極財政元年」と位置づけ、危機管理・成長投資を拡充。同時に債務残高対GDP比の着実な低下で財政健全化も維持。
+            </li>
+            <li>
+                <strong>2. 国内投資と先端技術の成長軸化：</strong><br>
+                2040年度に「国内投資250兆円」を達成目標とし、AI・半導体・量子・GX・防災・創薬など17の戦略分野へ官民で集中投資を敢行。
+            </li>
+            <li>
+                <strong>3. 地域経済・中小企業強化と賃上げ定着：</strong><br>
+                地域産業クラスター育成とインフラ整備を進め、地方の雇用と基盤を堅持。2029年度まで「実質賃金年1%程度の上昇定着」を目指す。
+            </li>
+            <li>
+                <strong>4. 総合安全保障・経済安全保障・防災の強靱化：</strong><br>
+                防衛力・サイバー・物資供給網を強靱化。防災庁の設置や国土強靱化の推進により、地政学リスク・自然災害対応力を向上。
+            </li>
+            <li>
+                <strong>5. 人口減少下の社会保障・人材政策推進：</strong><br>
+                全世代型社会保障再設計による保険料負担の抑制、少子化対策、リスキリング・医療介護DXの推進で持続的な社会活力を維持。
+            </li>
+        </ul>
+        <div class="disclaimer-text">※上記は多岐にわたる方針全体の中から、代表的な項目を抜粋・要約したものです。</div>
+
+        <div class="evidence-box">
+            <div class="evidence-title">🔗 引用元・エビデンス</div>
+            ・内閣府 / 経済財政諮問会議「経済財政運営と改革の基本方針2026（骨太の方針2026）」（2026年7月21日閣議決定）<br>
+            ・日本経済新聞 / Sustainable Japan「骨太方針2026閣議決定 地方政策は産業投資を柱に」（2026年7月22日）<br>
+            <a class="evidence-link" href="https://sustainablejapan.jp/2026/07/22/fiscal-policy-2026/128369" target="_blank">https://sustainablejapan.jp/2026/07/22/fiscal-policy-2026/128369</a>
+        </div>
+    </div>
+
+    <!-- トピックス 1-4（情報通信インフラ） -->
+    <div class="card-purple">
+        <div class="card-title">
+            <span>情報通信インフラ強化「低軌道衛星・海底ケーブル分散化」の推進</span>
+            <span class="badge-purple">国家インフラ政策</span>
+        </div>
+
+        <p class="p-block">
+            財務省として経済対策・予算配分における重点投資方針を提示。<br>
+            安全保障や災害耐性の向上、さらには地方創生を見据えた<strong>「情報通信インフラ整備」</strong>への財政支援を強力に推進しています。
+        </p>
+
+        <ul class="list-block">
+            <li>
+                <strong>低軌道衛星通信インフラ整備：</strong><br>
+                災害時や離島での通信確保、経済安全保障の観点から、低軌道衛星を活用した次世代通信網の構築を支援。
+            </li>
+            <li>
+                <strong>海底ケーブルの地方分散立地：</strong><br>
+                首都圏・近畿圏への集中を回避し、リスク分散と地方活性化を図るため、海底ケーブル陸揚げ基地の地方立地を促進。
+            </li>
+        </ul>
+
+        <div class="evidence-box">
+            <div class="evidence-title">🔗 引用元・エビデンス</div>
+            ・総務省 / 財務省「経済対策におけるデジタル通信インフラ整備・予算配分計画」資料より要約
+        </div>
+    </div>
+
+    <!-- トピックス 1-5（2026年2月 広報改革） -->
+    <div class="card-purple">
+        <div class="card-title">
+            <span>財務省広報の改革「大臣メッセージと財務省note」の開始</span>
+            <span class="badge-purple">2026年2月</span>
+        </div>
+
+        <p class="p-block">
+            就任後、補正予算や税制改正の推進と並行し、<br>
+            財務省公式noteの開設やSNSを活用したメッセージ発信を自ら主導。<br>
+            国民や市場に向けた<strong>「開かれた広報・直接的な対話方針」</strong>を積極的に推し進めています。
+        </p>
+
+        <div class="evidence-box">
+            <div class="evidence-title">🔗 引用元・エビデンス</div>
+            ・財務省公式note「片山大臣からのご挨拶と財務省noteの開設」（2026年2月24日）<br>
+            <a class="evidence-link" href="https://mof-gov.note.jp/n/nbf82e7985bda" target="_blank">https://mof-gov.note.jp/n/nbf82e7985bda</a>
+        </div>
+    </div>
+
+
+    <!-- 2. 川崎重工業（テーマ：青 / 時系列順） -->
+    <div class="section-header-blue">2. 川崎重工業 最新トピックス（時系列）</div>
+
+    <!-- AI（2026年5月） -->
+    <div class="card-blue">
+        <div class="card-title">
+            <span>「フィジカルAI<span class="read-text">（人工知能）</span>」拠点を開設（サンノゼ）</span>
+            <span class="badge-blue">2026年5月</span>
+        </div>
+
+        <p class="p-block">
+            現実世界の物理環境で自律的に状況を判断し動く<strong>「フィジカルAI<span class="read-text">（人工知能）</span>」</strong>を新たな成長の柱とし、<br>
+            全社を挙げたAIロボット事業への本格シフトを推進しています。
+        </p>
+
+        <ul class="list-block">
+            <li>
+                <strong>米国シリコンバレー拠点の開設：</strong><br>
+                2026年5月、サンノゼに「Kawasaki Physical AI Center<span class="read-text">（カワサキ・フィジカル・エーアイ・センター）</span>」を開設し、NVIDIA<span class="read-text">（エヌビディア）</span>やMicrosoft等の技術連携を強化。
+            </li>
+            <li>
+                <strong>現場の無人化・自動化：</strong><br>
+                ヒューマノイド（人型ロボット）や危険現場用自動化ロボットの社会実装を急ピッチで展開中。
+            </li>
+        </ul>
+
+        <div class="detail-box-blue">
+            <span class="detail-box-title-blue">■ 技術連携の動向</span>
+            NVIDIA<span class="read-text">（エヌビディア）</span>のジェンセン・フアンCEO<span class="read-text">（最高経営責任者）</span>からも高い評価を受けており、デジタルツイン技術と統合した工場・物流現場の完全自動化プラットフォーム構築を目指しています。
+        </div>
+
+        <!-- 考察・応用例 -->
+        <div class="insight-note">
+            <strong>【考察・ビジネスへの応用例】</strong><br>
+            この「フィジカルAI・ロボット」の仕組みは、単なる工場の自動化にとどまらず、少子高齢化による深刻な労働力不足を根本から解決するインフラになります。例えば<strong>「物流倉庫でのピッキングやラストワンマイル配送」「危険を伴うインフラ点検・災害救助」「将来的には介護・医療現場での物理的サポート」</strong>など、あらゆる実社会の労働代替システムとして活用が期待されます。
+        </div>
+
+        <div class="evidence-box">
+            <div class="evidence-title">🔗 引用元・エビデンス</div>
+            ・AITodayニュース「Nvidia、川崎重工とトヨタのAI提携拡大 — ジェンセン・フアンCEO来日時に言及」（2026年7月16日）<br>
+            <a class="evidence-link" href="https://hellomarvisaitoday.com/ja/articles/f50e0476-d0a2-40b3-92fe-2f3c48cb6335" target="_blank">https://hellomarvisaitoday.com/ja/articles/f50e0476-d0a2-40b3-92fe-2f3c48cb6335</a><br>
+            ・SB ビジネスクラウド「川崎重工、米シリコンバレーにフィジカルAI拠点を開設 NVIDIAや富士通などと協業」（2026年5月22日）<br>
+            <a class="evidence-link" href="https://www.sbbit.jp/article/st/185481" target="_blank">https://www.sbbit.jp/article/st/185481</a>
+        </div>
+    </div>
+
+    <!-- 水素（2025年10月） -->
+    <div class="card-blue">
+        <div class="card-title">
+            <span>水素エネルギー・サプライチェーンの本格化（扇島<span class="read-text">：おうぎしま</span>プラント）</span>
+            <span class="badge-blue">2025年10月</span>
+        </div>
+
+        <p class="p-block">
+            「製造・輸送・利用」の全フェーズを自社群で網羅する水素社会の実現に向け、<br>
+            大規模な拠点整備と実証検証を段階的に進行させています。
+        </p>
+
+        <ul class="list-block">
+            <li>
+                <strong>国内最大の拠点整備：</strong><br>
+                川崎臨海部（扇島<span class="read-text">：おうぎしま</span>）にて、国内最大規模となる<span class="highlight">「液化水素プラント・受け入れ基地」</span>の建設に着工。
+            </li>
+            <li>
+                <strong>利用技術の確立：</strong><br>
+                世界初となる「大型舶用量産水素エンジン」の陸上検証に成功し、実用化を推進。
+            </li>
+        </ul>
+
+        <!-- 考察・応用例 -->
+        <div class="insight-note">
+            <strong>【考察・ビジネスへの応用例】</strong><br>
+            「水素を大規模に作り、貯め、燃やす」一連の仕組みは、再生可能エネルギーだけでは賄いきれない電力需要の穴を埋める次世代エネルギー網です。例えば、膨大な電力を消費する<strong>生成AIデータセンター向けのゼロエミッション電源</strong>としての活用や、電化が難しい<strong>製鉄・化学などの重工業、大型トラック・航空機などの次世代燃料</strong>としての応用が想定されます。
+        </div>
+
+        <div class="evidence-box">
+            <div class="evidence-title">🔗 引用元・エビデンス</div>
+            ・川崎重工 ニュース「川崎臨海部における商用規模の液化水素インフラ実証に着手」（2025年10月30日）<br>
+            <a class="evidence-link" href="https://www.khi.co.jp/pressrelease/detail/20251030_2.html" target="_blank">https://www.khi.co.jp/pressrelease/detail/20251030_2.html</a>
+        </div>
+    </div>
+
+    <!-- 造船（2025年12月） -->
+    <div class="card-blue">
+        <div class="card-title">
+            <span>【造船】世界最大「4万㎥型」液化水素運搬船を受注</span>
+            <span class="badge-blue">2025年12月</span>
+        </div>
+
+        <p class="p-block">
+            JSE<span class="read-text">（日本水素エネルギー）</span>より、<span class="highlight">世界最大となる4万㎥型液化水素運搬船</span>の造船契約を締結しました。
+        </p>
+
+        <ul class="list-block">
+            <li>
+                <strong>技術的強み：</strong><br>
+                同社が保有する<strong>マイナス253度の極低温保持技術</strong>を活かし、2030年の本格商用化に向けた大量輸送船艇を建造。
+            </li>
+            <li>
+                <strong>事業戦略の転換：</strong><br>
+                LNG<span class="read-text">（液化天然ガス）</span>燃料船などの造船ノウハウを昇華させ、一般船から高付加価値かつ高度な技術を要する「次世代水素船」へと特化し、収益性の向上を図る方針です。
+            </li>
+        </ul>
+
+        <!-- 考察・応用例 -->
+        <div class="insight-note">
+            <strong>【考察・ビジネスへの応用例】</strong><br>
+            マイナス253℃という極低温状態を海上輸送で安全に維持するこの高度な造船技術は、かつてLNG船（液化天然ガス運搬船）が世界に普及したように、<strong>日本発の技術がグローバルスタンダード（国際標準）となる可能性</strong>を秘めています。中東や豪州で安価に製造されたクリーンエネルギーを国内に安定供給するための「エネルギー安全保障の切り札」として機能します。
+        </div>
+
+        <div class="evidence-box">
+            <div class="evidence-title">🔗 引用元・エビデンス</div>
+            ・SmartGrid Forum「世界最大の液化水素船を建造へ、JSEと川崎重工」（2026年1月6日締結発表）<br>
+            <a class="evidence-link" href="https://sgforum.impress.co.jp/article/5732" target="_blank">https://sgforum.impress.co.jp/article/5732</a>
+        </div>
+    </div>
+
+    <div class="footer">
+        ※本資料は社内報告用サマリーです。
+    </div>
+
+</div>
+
+</body>
+</html>
